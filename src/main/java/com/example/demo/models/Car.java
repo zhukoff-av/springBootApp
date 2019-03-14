@@ -1,18 +1,41 @@
 package com.example.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Date;
 
+@Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Car {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long id;
 
   private String name;
   private String email;
   private String phone;
   private String model;
-  private String serialNumber;
-  private BigDecimal purchasedPrice;
-  private Date purchasedDate;
+  private String serial_number;
+  private BigDecimal purchase_price;
+
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyyy")
+  private Date purchase_date;
   private boolean contact;
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
 
   public boolean getContact() {
     return contact;
@@ -54,27 +77,27 @@ public class Car {
     this.model = model;
   }
 
-  public String getSerialNumber() {
-    return serialNumber;
+  public String getSerial_number() {
+    return serial_number;
   }
 
-  public void setSerialNumber(String serialNumber) {
-    this.serialNumber = serialNumber;
+  public void setSerial_number(String serial_number) {
+    this.serial_number = serial_number;
   }
 
-  public BigDecimal getPurchasedPrice() {
-    return purchasedPrice;
+  public BigDecimal getPurchase_price() {
+    return purchase_price;
   }
 
-  public void setPurchasedPrice(BigDecimal purchasedPrice) {
-    this.purchasedPrice = purchasedPrice;
+  public void setPurchase_price(BigDecimal purchase_price) {
+    this.purchase_price = purchase_price;
   }
 
-  public Date getPurchasedDate() {
-    return purchasedDate;
+  public Date getPurchase_date() {
+    return purchase_date;
   }
 
-  public void setPurchasedDate(Date purchasedDate) {
-    this.purchasedDate = purchasedDate;
+  public void setPurchase_date(Date purchase_date) {
+    this.purchase_date = purchase_date;
   }
 }
