@@ -11,24 +11,30 @@ import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Date;
 
+@Data
+
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@Data
 public class Car {
-
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private String id;
-
   private String name;
   private String email;
   private String phone;
   private String model;
   private String serial_number;
   private BigDecimal purchase_price;
-
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyyy")
   private Date purchase_date;
   private boolean contact;
 
+
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
 }

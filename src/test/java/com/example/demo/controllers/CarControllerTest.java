@@ -12,6 +12,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 
+import static org.mockito.Mockito.verify;
+
 @RunWith(MockitoJUnitRunner.class)
 public class CarControllerTest {
 
@@ -22,8 +24,10 @@ public class CarControllerTest {
 
   @Test
   public void testList() throws Exception {
+
     Mockito.when(carRepository.findAll()).thenReturn(ImmutableList.of());
     List<Car> list = sut.list();
-    Mockito.verify(carRepository.findAll());
+    verify(carRepository).findAll();
+
   }
 }
