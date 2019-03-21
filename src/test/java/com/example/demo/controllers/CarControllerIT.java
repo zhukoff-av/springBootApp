@@ -2,14 +2,18 @@ package com.example.demo.controllers;
 
 import com.example.demo.models.Car;
 import com.google.common.collect.ImmutableList;
+import org.hibernate.dialect.SQLiteDialect;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.client.RestTemplate;
+import org.sqlite.SQLiteDataSource;
 
 import java.util.List;
 
@@ -23,9 +27,7 @@ import static org.junit.Assert.*;
 @SpringBootTest
 
 public class CarControllerIT {
-
   RestTemplate restTemplate = new RestTemplate();
-
 
   @Test
   public void testGetListOfProviders() throws Exception {

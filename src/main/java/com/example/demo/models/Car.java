@@ -11,13 +11,16 @@ import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Date;
 
-@Data
 
 @Entity
+@Data
+
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
 public class Car {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
+
   private String id;
   private String name;
   private String email;
@@ -29,12 +32,8 @@ public class Car {
   private Date purchase_date;
   private boolean contact;
 
+  private Car() {
 
-  public String getId() {
-    return id;
   }
 
-  public void setId(String id) {
-    this.id = id;
-  }
 }
